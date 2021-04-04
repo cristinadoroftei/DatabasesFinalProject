@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app_style.css";
 import {
@@ -40,6 +40,9 @@ const App = ({ location }) => {
           </Route>
           <Route exact path="/projects">
             <Projects />
+          </Route>
+          <Route exact path="/project/:id">
+            <h2>congrats</h2>
           </Route>
           <Route exact path="/people">
             <People />
