@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
 
-const path = require("path");
+const bodyParser = require("body-parser");
 
-// Serve the static files from the React app
-//app.use(express.static(path.join(__dirname, "../frontend/build")));
+const managementRoutes = require("./routes/management");
 
-app.get("/getText", (req, res, next) => {
-  res.send({ text: "motherfucka" });
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(managementRoutes);
 
 const port = process.env.PORT ? process.env.PORT : 3001;
 
