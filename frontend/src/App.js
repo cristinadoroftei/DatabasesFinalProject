@@ -6,6 +6,7 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import NotFound from "./components/NotFound";
 import People from "./components/People";
 import Projects from "./components/Projects";
 
@@ -27,6 +28,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/not-found">
+            <NotFound />
+          </Route>
           <Route exact path="/projects">
             <Projects />
           </Route>
@@ -36,6 +40,8 @@ export default function App() {
           <Route exact path="/">
             <Redirect to="/projects" />
           </Route>
+          {/*  endregion */}
+          <Redirect to="/not-found" />
         </Switch>
       </div>
     </Router>
