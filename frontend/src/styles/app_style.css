@@ -2,6 +2,7 @@
   background-color: #f7f7f7;
 }
 
-.navitem:global(.active) {
-  background-color: #777777;
+.project_card {
+  width: 19rem;
+  height: 12.5rem;
 }

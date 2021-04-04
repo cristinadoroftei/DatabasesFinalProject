@@ -1,10 +1,11 @@
 import { Card } from "react-bootstrap";
 import { ProjectCardWrapper } from "./projects_style";
+import "../../styles/app_style.css";
 
 const Project = ({ project }) => {
   return (
     <ProjectCardWrapper>
-      <Card style={{ width: "19rem", height: "12.5rem" }}>
+      <Card border="info" className="project_card">
         <Card.Body>
           <Card.Title style={{ height: "4rem" }}>{project.name}</Card.Title>
           <Card.Text>
