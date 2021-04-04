@@ -1,51 +1,55 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('invoices', {
+const DataTypes = require("sequelize");
+
+const sequelize = require("../util/database");
+module.exports = sequelize.define(
+  "invoices",
+  {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     project_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'projects',
-        key: 'id'
-      }
+        model: "projects",
+        key: "id",
+      },
     },
     name: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: true,
     },
     created_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
     due_date: {
       type: DataTypes.DATEONLY,
-      allowNull: true
+      allowNull: true,
     },
     start_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
     end_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
     status: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
     },
     notes: {
       type: DataTypes.TEXT,
-      allowNull: true
-    }
-  }, {
+      allowNull: true,
+    },
+  },
+  {
     sequelize,
-    tableName: 'invoices',
+    tableName: "invoices",
     hasTrigger: true,
     timestamps: false,
     indexes: [
@@ -53,17 +57,13 @@ module.exports = function(sequelize, DataTypes) {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
+        fields: [{ name: "id" }],
       },
       {
         name: "FKInvoices219624",
         using: "BTREE",
-        fields: [
-          { name: "project_id" },
-        ]
+        fields: [{ name: "project_id" }],
       },
-    ]
-  });
-};
+    ],
+  }
+);

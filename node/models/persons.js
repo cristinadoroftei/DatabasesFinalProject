@@ -1,64 +1,65 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('persons', {
+const DataTypes = require("sequelize");
+
+const sequelize = require("../util/database");
+
+module.exports = sequelize.define(
+  "persons",
+  {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     company_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'companies',
-        key: 'id'
-      }
+        model: "companies",
+        key: "id",
+      },
     },
     first_name: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     last_name: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     user_type: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     username: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     password: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     internal_cost: {
       type: DataTypes.DOUBLE,
-      allowNull: false
-    }
-  }, {
+      allowNull: false,
+    },
+  },
+  {
     sequelize,
-    tableName: 'persons',
+    tableName: "persons",
     timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
+        fields: [{ name: "id" }],
       },
       {
         name: "FKPersons678186",
         using: "BTREE",
-        fields: [
-          { name: "company_id" },
-        ]
+        fields: [{ name: "company_id" }],
       },
-    ]
-  });
-};
+    ],
+  }
+);
