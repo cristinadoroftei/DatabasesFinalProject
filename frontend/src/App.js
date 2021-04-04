@@ -1,21 +1,43 @@
-import "./App.css";
-import { useEffect, useState } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
+import People from "./components/People";
+import Projects from "./components/Projects";
 
-function App() {
-  const [text, setText] = useState(null);
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/projects">Projects</Link>
+            </li>
+            <li>
+              <Link to="/people">People</Link>
+            </li>
+          </ul>
+        </nav>
 
-  useEffect(() => {
-    fetch("getText")
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        console.log("text!", res);
-        setText(res.text);
-      });
-  }, []);
-
-  return <h1>Text from backend is: {text}</h1>;
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact path="/projects">
+            <Projects />
+          </Route>
+          <Route exact path="/people">
+            <People />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/projects" />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
 }
-
-export default App;
