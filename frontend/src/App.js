@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app_style.css";
 import {
@@ -6,13 +6,14 @@ import {
   Switch,
   Route,
   Redirect,
+  withRouter,
 } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import People from "./components/People";
 import Projects from "./components/projects/Projects";
 import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
 
-export default function App() {
+const App = ({ location }) => {
   return (
     <Router>
       <div>
@@ -26,8 +27,8 @@ export default function App() {
               className="d-inline-block align-top"
             />{" "}
           </NavbarBrand>
-          <Nav className="mr-auto">
-            <Nav.Link href="/projects">Projects</Nav.Link>
+          <Nav activeKey={location.pathname} className="mr-auto">
+            <Nav.Link href="/projects">Projects</Nav.Link>{" "}
             <Nav.Link href="/people">People</Nav.Link>
           </Nav>
         </Navbar>
@@ -52,4 +53,6 @@ export default function App() {
       </div>
     </Router>
   );
-}
+};
+
+export default withRouter(App);

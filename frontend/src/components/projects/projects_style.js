@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const ProjectCardWrapper = styled.div`
   margin: 20px;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ProjectsWrapper = styled.div`

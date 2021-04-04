@@ -1,3 +1,8 @@
 .color-nav {
   background-color: #f7f7f7;
 }
+
+.project_card {
+  width: 19rem;
+  height: 12.5rem;
+}
