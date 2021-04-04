@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app_style.css";
 import {
@@ -12,8 +12,24 @@ import NotFound from "./components/NotFound";
 import People from "./components/People";
 import Projects from "./components/projects/Projects";
 import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import ProjectView from "./components/projects/ProjectView";
 
-const App = ({ location }) => {
+const App = ({ location, history }) => {
+  const projectPrefix = (end) => `/project/:projectId(\\d+)/${end}`;
+
+  const [project, setProject] = useState(null);
+
+  const getProjectById = (id) => {
+    fetch(`/project/${id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log("response!project", res);
+        setProject(res.project);
+      });
+  };
+
   return (
     <Router>
       <div>
@@ -41,8 +57,15 @@ const App = ({ location }) => {
           <Route exact path="/projects">
             <Projects />
           </Route>
-          <Route exact path="/project/:id">
-            <h2>congrats</h2>
+          <Route
+            exact
+            path="/project/:projectId"
+            render={(routeProps) => (
+              <ProjectView projectId={routeProps.match.params.projectId} />
+            )}
+          ></Route>
+          <Route exact path={projectPrefix("tasks")}>
+            <div>heh</div>
           </Route>
           <Route exact path="/people">
             <People />

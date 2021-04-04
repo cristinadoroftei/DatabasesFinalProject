@@ -13,3 +13,10 @@ exports.getText = (req, res, next) => {
       console.log(err);
     });
 };
+
+exports.getProjectById = (req, res, next) => {
+  const projId = req.params.projectId;
+  Projects.findByPk(projId).then((project) => {
+    res.send({ project: project });
+  });
+};
