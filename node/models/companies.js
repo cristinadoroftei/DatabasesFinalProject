@@ -1,41 +1,43 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('companies', {
+const DataTypes = require("sequelize");
+
+const sequelize = require("../util/database");
+module.exports = sequelize.define(
+  "companies",
+  {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     contact_name: {
       type: DataTypes.STRING(255),
-      allowNull: true
+      allowNull: true,
     },
     contact_email: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: false,
     },
     contact_phone: {
       type: DataTypes.STRING(255),
-      allowNull: true
-    }
-  }, {
+      allowNull: true,
+    },
+  },
+  {
     sequelize,
-    tableName: 'companies',
+    tableName: "companies",
     timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
+        fields: [{ name: "id" }],
       },
-    ]
-  });
-};
+    ],
+  }
+);

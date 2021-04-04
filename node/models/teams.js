@@ -1,29 +1,32 @@
-const Sequelize = require('sequelize');
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('teams', {
+const DataTypes = require("sequelize");
+
+const sequelize = require("../util/database");
+
+module.exports = sequelize.define(
+  "teams",
+  {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING(255),
-      allowNull: false
-    }
-  }, {
+      allowNull: false,
+    },
+  },
+  {
     sequelize,
-    tableName: 'teams',
+    tableName: "teams",
     timestamps: false,
     indexes: [
       {
         name: "PRIMARY",
         unique: true,
         using: "BTREE",
-        fields: [
-          { name: "id" },
-        ]
+        fields: [{ name: "id" }],
       },
-    ]
-  });
-};
+    ],
+  }
+);
