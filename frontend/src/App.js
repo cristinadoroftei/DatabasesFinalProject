@@ -14,10 +14,6 @@ import Projects from "./components/projects/Projects";
 import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
 
 const App = ({ location }) => {
-  useEffect(() => {
-    console.log("here!", location.pathname);
-  }, [location.pathname]);
-
   return (
     <Router>
       <div>
