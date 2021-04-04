@@ -15,14 +15,9 @@ app.use(managementRoutes);
 app.use(errorController.get404);
 
 //sync the models to the database by creating the appropriate tables and relatiions
-sequelize
-  .sync()
-  .then((result) => {
-    console.log("result!", result);
-  })
-  .catch((err) => {
-    console.log("error!", err);
-  });
+sequelize.sync().catch((err) => {
+  console.log("error on syncing sequelize!", err);
+});
 
 const port = process.env.PORT ? process.env.PORT : 3001;
 
