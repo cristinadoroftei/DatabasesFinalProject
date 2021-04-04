@@ -7,7 +7,6 @@ exports.getText = (req, res, next) => {
     },
   })
     .then((projects) => {
-      console.log(projects);
       res.send({ projects: projects });
     })
     .catch((err) => {
