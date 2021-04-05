@@ -34,6 +34,6 @@ exports.getTasksByProjectId = (req, res, next) => {
   });
 };
 
-exports.getTaskStatusesByProjectId = (req, res, next) => {
+/* exports.getTaskStatusesByProjectId = (req, res, next) => {
   const projId = req.params.projectId;
-};
+}; */
