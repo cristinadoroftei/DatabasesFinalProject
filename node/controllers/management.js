@@ -1,4 +1,5 @@
 const Projects = require("../models/projects");
+const Tasks = require("../models/tasks");
 
 exports.getText = (req, res, next) => {
   Projects.findAll({
@@ -18,5 +19,16 @@ exports.getProjectById = (req, res, next) => {
   const projId = req.params.projectId;
   Projects.findByPk(projId).then((project) => {
     res.send({ project: project });
+  });
+};
+
+exports.getTasksByProjectId = (req, res, next) => {
+  const projId = req.params.projectId;
+  Tasks.findAll({
+    where: {
+      project_id: projId,
+    },
+  }).then((tasks) => {
+    res.send({ tasks: tasks });
   });
 };

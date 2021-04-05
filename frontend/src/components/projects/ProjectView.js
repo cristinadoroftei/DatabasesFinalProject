@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import ProjectViewHeader from "./ProjectViewHeader";
 
 const ProjectView = ({ projectId }) => {
-  const navLinkBase = `/project/${projectId}`;
-
   const [project, setProject] = useState(null);
 
   const getProjectById = (id) => {
@@ -24,14 +21,7 @@ const ProjectView = ({ projectId }) => {
 
   return (
     <div>
-      <Router>
-        <Navbar className="color-nav" variant="light">
-          <Nav className="mr-auto">
-            <Nav.Link href={`${navLinkBase}/tasks`}>Tasks</Nav.Link>{" "}
-            <Nav.Link href={`${navLinkBase}/team`}>Team</Nav.Link>
-          </Nav>
-        </Navbar>
-      </Router>
+      <ProjectViewHeader projectId={projectId} />
       <h2>this is project: {project && project.id}</h2>
     </div>
   );
