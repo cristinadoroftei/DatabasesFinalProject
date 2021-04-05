@@ -15,7 +15,7 @@ const TasksList = ({ projectId }) => {
         setTasks(res.tasks);
       });
 
-    fetch(`task_statuses_by_project_id`)
+    fetch(`/task_statuses_by_project_id/${projectId}`)
       .then((res) => {
         return res.json();
       })
