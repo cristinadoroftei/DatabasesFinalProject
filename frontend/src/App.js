@@ -12,7 +12,6 @@ import NotFound from "./components/NotFound";
 import People from "./components/People";
 import Projects from "./components/projects/Projects";
 import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
-import ProjectView from "./components/projects/ProjectView";
 import TasksList from "./components/tasks/TasksList";
 
 const App = ({ location }) => {
@@ -45,13 +44,13 @@ const App = ({ location }) => {
           <Route exact path="/projects">
             <Projects />
           </Route>
-          <Route
+          {/*  <Route
             exact
             path="/project/:projectId"
             render={(routeProps) => (
               <ProjectView projectId={routeProps.match.params.projectId} />
             )}
-          ></Route>
+          ></Route> */}
           <Route
             exact
             path={projectPrefix("tasks")}
@@ -66,6 +65,11 @@ const App = ({ location }) => {
             <Redirect to="/projects" />
           </Route>
           {/*  endregion */}
+          <Redirect
+            exact
+            from="/project/:projectId"
+            to={projectPrefix("tasks")}
+          />
           <Redirect to="/not-found" />
         </Switch>
       </div>

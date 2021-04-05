@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ProjectViewHeader from "../projects/ProjectViewHeader";
 
 const TasksList = ({ projectId }) => {
   const [tasks, setTasks] = useState(null);
@@ -16,7 +17,12 @@ const TasksList = ({ projectId }) => {
 
   console.log("tasks!", tasks);
 
-  return <div>in tasks!</div>;
+  return (
+    <div>
+      <ProjectViewHeader projectId={projectId} />
+      in tasks!
+    </div>
+  );
 };
 
 export default TasksList;

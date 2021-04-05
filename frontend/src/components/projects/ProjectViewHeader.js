@@ -6,9 +6,14 @@ const projectViewHeader = ({ projectId, location }) => {
 
   return (
     <Router>
-      <Navbar className="color-nav" variant="light">
+      <Navbar className="project_view_color_nav " variant="light">
         <Nav activeKey={location.pathname} className="mr-auto">
-          <Nav.Link href={`${navLinkBase}/tasks`}>Tasks</Nav.Link>{" "}
+          <Nav.Link
+            style={{ marginLeft: "22px" }}
+            href={`${navLinkBase}/tasks`}
+          >
+            Tasks
+          </Nav.Link>{" "}
           <Nav.Link href={`${navLinkBase}/team`}>Team</Nav.Link>
         </Nav>
       </Navbar>
