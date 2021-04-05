@@ -1,5 +1,6 @@
 const Projects = require("../models/projects");
 const Tasks = require("../models/tasks");
+const TaskStatuses = require("../models/task_statuses");
 
 exports.getText = (req, res, next) => {
   Projects.findAll({
@@ -31,4 +32,8 @@ exports.getTasksByProjectId = (req, res, next) => {
   }).then((tasks) => {
     res.send({ tasks: tasks });
   });
+};
+
+exports.getTaskStatusesByProjectId = (req, res, next) => {
+  const projId = req.params.projectId;
 };
