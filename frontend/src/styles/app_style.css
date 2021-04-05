@@ -1,10 +1,16 @@
 .color-nav {
-  background-color: #f7f7f7;
+  background-color: #f7fbfc;
 }
 .project_view_color_nav {
-  background-color: #eeebdd;
+  background-color: #d6e6f2;
 }
 .project_card {
   width: 19rem;
   height: 12.5rem;
+}
+
+.task_card {
+  width: 17rem;
+  height: auto;
+  margin: 8px 0;
 }

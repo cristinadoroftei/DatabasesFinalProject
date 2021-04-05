@@ -9,7 +9,7 @@ const projectViewHeader = ({ projectId, location }) => {
       <Navbar className="project_view_color_nav " variant="light">
         <Nav activeKey={location.pathname} className="mr-auto">
           <Nav.Link
-            style={{ marginLeft: "22px" }}
+            style={{ marginLeft: "34px" }}
             href={`${navLinkBase}/tasks`}
           >
             Tasks
