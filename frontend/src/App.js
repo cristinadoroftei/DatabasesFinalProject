@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app_style.css";
 import {
@@ -12,8 +12,11 @@ import NotFound from "./components/NotFound";
 import People from "./components/People";
 import Projects from "./components/projects/Projects";
 import { Nav, Navbar, NavbarBrand } from "react-bootstrap";
+import TasksList from "./components/tasks/TasksList";
 
 const App = ({ location }) => {
+  const projectPrefix = (end) => `/project/:projectId(\\d+)/${end}`;
+
   return (
     <Router>
       <div>
@@ -41,6 +44,20 @@ const App = ({ location }) => {
           <Route exact path="/projects">
             <Projects />
           </Route>
+          {/*  <Route
+            exact
+            path="/project/:projectId"
+            render={(routeProps) => (
+              <ProjectView projectId={routeProps.match.params.projectId} />
+            )}
+          ></Route> */}
+          <Route
+            exact
+            path={projectPrefix("tasks")}
+            render={(routeProps) => (
+              <TasksList projectId={routeProps.match.params.projectId} />
+            )}
+          ></Route>
           <Route exact path="/people">
             <People />
           </Route>
@@ -48,6 +65,11 @@ const App = ({ location }) => {
             <Redirect to="/projects" />
           </Route>
           {/*  endregion */}
+          <Redirect
+            exact
+            from="/project/:projectId"
+            to={projectPrefix("tasks")}
+          />
           <Redirect to="/not-found" />
         </Switch>
       </div>

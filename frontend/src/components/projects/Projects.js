@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Project from "./Project";
+import Project from "./ProjectCard";
 import { ProjectsWrapper } from "./projects_style";
 
 const Projects = () => {
