@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from "react";
 import ProjectViewHeader from "../projects/ProjectViewHeader";
 import TaskCard from "./TaskCard";
-import { TaskStatusTitle, TaskStatusWrapper } from "./tasks_style";
+import {
+  TaskListWrapper,
+  TaskStatusTitle,
+  TaskStatusWrapper,
+} from "./tasks_style";
 
 const TasksList = ({ projectId }) => {
   const [tasks, setTasks] = useState(null);
   const [taskStatuses, setTaskStatuses] = useState(null);
 
   const getTaskStatus = (task) => {
-    return taskStatuses.find((status) => status.id === task.task_status_id)
-      .name;
+    const taskStatus = taskStatuses.find(
+      (status) => status.id === task.task_status_id
+    );
+    return taskStatus ? taskStatus.name : taskStatus;
   };
 
   useEffect(() => {
@@ -30,27 +36,25 @@ const TasksList = ({ projectId }) => {
       });
   }, [projectId]);
 
-  console.log("tasks!", tasks);
-  console.log("tasks!statuses", taskStatuses);
-
   return (
     <div>
       <ProjectViewHeader projectId={projectId} />
-
-      {taskStatuses &&
-        tasks &&
-        taskStatuses.map((taskStatus) => (
-          <TaskStatusWrapper>
-            <TaskStatusTitle>{taskStatus.name}</TaskStatusTitle>
-            {tasks.map((task) => {
-              return (
-                getTaskStatus(task) === taskStatus.name && (
-                  <TaskCard task={task} />
-                )
-              );
-            })}
-          </TaskStatusWrapper>
-        ))}
+      <TaskListWrapper>
+        {taskStatuses &&
+          tasks &&
+          taskStatuses.map((taskStatus) => (
+            <TaskStatusWrapper key={taskStatus.id}>
+              <TaskStatusTitle>{taskStatus.name}</TaskStatusTitle>
+              {tasks.map((task) => {
+                return (
+                  getTaskStatus(task) === taskStatus.name && (
+                    <TaskCard key={task.id} task={task} />
+                  )
+                );
+              })}
+            </TaskStatusWrapper>
+          ))}
+      </TaskListWrapper>
     </div>
   );
 };

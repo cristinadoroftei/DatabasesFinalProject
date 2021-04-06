@@ -5,7 +5,8 @@ export const TaskStatusWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 18.2rem;
-  background-color: #b9d7ea;
+  height: auto;
+  background-color: #f3f3f3;
   margin: 10px 10px;
   border-radius: 7px;
 `;
@@ -13,4 +14,11 @@ export const TaskStatusWrapper = styled.div`
 export const TaskStatusTitle = styled.div`
   font-size: 16px;
   margin-top: 3px;
+`;
+
+export const TaskListWrapper = styled.div`
+  display: flex;
+  position: relative;
+  height: auto;
+  margin: 10px 48px;
 `;
