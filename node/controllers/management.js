@@ -40,11 +40,9 @@ exports.getTaskStatusesByProjectId = (req, res, next) => {
 
   Projects.findByPk(projId)
     .then((project) => {
-      console.log(project);
       return project.getTaskStatuses();
     })
     .then((taskStatuses) => {
-      console.log(taskStatuses);
       res.send({ taskStatuses: taskStatuses });
     });
 };
