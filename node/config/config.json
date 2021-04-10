@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "your mysql username",
-    "password": "your mysql password",
+    "username": "root",
+    "password": "louisiana",
     "database": "management",
     "host": "127.0.0.1",
     "dialect": "mysql"
