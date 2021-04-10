@@ -2,8 +2,6 @@ const Companies = require("../models/companies");
 const Invoices = require("../models/invoices");
 const Projects = require("../models/projects");
 
-//GET
-
 exports.getInvoices = (req, res, next) => {
   Projects.findAll({
     where: {
@@ -41,6 +39,18 @@ exports.updateInvoice = (req, res, next) => {
       return res.send({ response: updatedInvoice });
     })
     .catch((err) => console.log(err));
+};
+
+exports.deleteInvoice = (req, res, next) => {
+  const invoiceId = req.params.id;
+  Invoices.findByPk(invoiceId)
+    .then((invoice) => {
+      return invoice.destroy();
+    })
+    .then(() => {
+      return res.send({ response: "invoice deleted" });
+    })
+    .catch((err) => console.log("error in deleting invoice", err));
 };
 
 exports.createInvoice = (req, res, next) => {

@@ -35,6 +35,8 @@ router.put("/invoices/:id", invoicesController.updateInvoice);
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 
+router.delete("/invoices/:id", invoicesController.deleteInvoice);
+
 // invoice routes
 router.post("/invoices", invoicesController.createInvoice);
 
