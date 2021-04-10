@@ -6,16 +6,26 @@ const invoicesController = require('../controllers/invoices');
 
 const router = express.Router();
 
-// project routes
-router.get("/projects", projectsController.getProjects);
-// router.get("/projects/new", projectsController.createProject);
-router.post("/projects", projectsController.createProject);
+//GET
+// router.get("/projects/new", projectsController.createProject); 
 
-// router.get("/projects/:id", projectsController.getProjectsById);
+router.get("/projects/:id", projectsController.getProjectsById);
 
 router.get("/projects/:id/tasks", tasksController.getTasksByProjectId);
 
-router.get("/projects/:id/task_statuses", tasksController.getTaskStatusesByProjectId);
+router.get(
+  "/projects/:id/task_statuses",
+  tasksController.getTaskStatusesByProjectId
+);
+
+//POST
+router.post("/projects", projectsController.createProject);
+
+//PUT
+router.put("/projects/:id", projectsController.updateProject);
+
+//DELETE
+router.delete("/projects/:id", projectsController.deleteProject);
 
 // invoice routes
 router.post("/invoices", invoicesController.createInvoice);
