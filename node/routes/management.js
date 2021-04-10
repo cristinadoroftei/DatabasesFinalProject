@@ -5,9 +5,10 @@ const tasksController = require("../controllers/tasks");
 
 const router = express.Router();
 
-router.get("/projects", projectsController.getProjects);
+//GET
 // router.get("/projects/new", projectsController.createProject);
-router.post("/projects", projectsController.createProject);
+
+router.get("/projects", projectsController.getProjects);
 
 router.get("/projects/:id", projectsController.getProjectsById);
 
@@ -17,5 +18,11 @@ router.get(
   "/projects/:id/task_statuses",
   tasksController.getTaskStatusesByProjectId
 );
+
+//POST
+router.post("/projects", projectsController.createProject);
+
+//PUT
+router.put("/projects/:id", projectsController.updateProject);
 
 module.exports = router;
