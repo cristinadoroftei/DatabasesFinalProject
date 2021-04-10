@@ -6,12 +6,12 @@ const Projects = () => {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
-    fetch("getText")
+    fetch("/projects")
       .then((res) => {
+        console.log("response!", res);
         return res.json();
       })
       .then((res) => {
-        console.log("response!", res);
         setProjects(res.projects);
       });
   }, []);

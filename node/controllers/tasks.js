@@ -1,31 +1,9 @@
 const Projects = require("../models/projects");
-
 const Tasks = require("../models/tasks");
 const TaskStatuses = require("../models/task_statuses");
 
-exports.getText = (req, res, next) => {
-  Projects.findAll({
-    where: {
-      company_id: req.user.company_id,
-    },
-  })
-    .then((projects) => {
-      res.send({ projects: projects });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-exports.getProjectById = (req, res, next) => {
-  const projId = req.params.projectId;
-  Projects.findByPk(projId).then((project) => {
-    res.send({ project: project });
-  });
-};
-
 exports.getTasksByProjectId = (req, res, next) => {
-  const projId = req.params.projectId;
+  const projId = req.params.id;
   Tasks.findAll({
     where: {
       project_id: projId,
@@ -36,10 +14,11 @@ exports.getTasksByProjectId = (req, res, next) => {
 };
 
 exports.getTaskStatusesByProjectId = (req, res, next) => {
-  const projId = req.params.projectId;
+  const projId = req.params.id;
 
   Projects.findByPk(projId)
     .then((project) => {
+    //   console.log(Object.keys(Projects.prototype));
       return project.getTaskStatuses();
     })
     .then((taskStatuses) => {

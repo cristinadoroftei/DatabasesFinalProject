@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 
-const bodyParser = require("body-parser");
 const errorController = require("./controllers/error");
 const sequelize = require("./util/database");
 
@@ -12,7 +11,8 @@ const Persons = require("./models/persons");
 
 const managementRoutes = require("./routes/management");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded());
+app.use(express.json());
 
 app.use((req, res, next) => {
   Persons.findByPk(3)
@@ -50,8 +50,7 @@ sequelize
         password: "nonono",
         internal_cost: 1,
       });
-    }
-
+    };
     return person;
   })
   .then(() => {
