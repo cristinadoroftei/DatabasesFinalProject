@@ -30,3 +30,15 @@ exports.getInvoice = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.updateInvoice = (req, res, next) => {
+  const invoiceId = req.params.id;
+  Invoices.findByPk(invoiceId)
+    .then((invoice) => {
+      return invoice.update(req.body);
+    })
+    .then((updatedInvoice) => {
+      return res.send({ response: updatedInvoice });
+    })
+    .catch((err) => console.log(err));
+};

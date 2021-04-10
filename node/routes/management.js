@@ -13,10 +13,10 @@ router.get("/projects", projectsController.getProjects);
 
 router.get("/projects/:id", projectsController.getProjectsById);
 
-router.get("/projects/:id/tasks", tasksController.getTasksByProjectId);
+router.get("/tasks/:id/project", tasksController.getTasksByProjectId);
 
 router.get(
-  "/projects/:id/task_statuses",
+  "/task_statuses/:id/project",
   tasksController.getTaskStatusesByProjectId
 );
 
@@ -29,6 +29,8 @@ router.post("/projects", projectsController.createProject);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
+
+router.put("/invoices/:id", invoicesController.updateInvoice);
 
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
