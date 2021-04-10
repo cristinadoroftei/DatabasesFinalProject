@@ -28,6 +28,6 @@ exports.createProject = (req, res, next) => {
 //   const projId = req.params.id;
 //   Projects.findByPk(projId).then((project) => {
 //     res.send({ project: project });
-//   });
+
 // };
 // sdgfusdgfjsdfghdfgsadfga
