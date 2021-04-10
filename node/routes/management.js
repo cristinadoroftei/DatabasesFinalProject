@@ -22,6 +22,8 @@ router.get(
 
 router.get("/invoices", invoicesController.getInvoices);
 
+router.get("/invoices/:id", invoicesController.getInvoice);
+
 //POST
 router.post("/projects", projectsController.createProject);
 
