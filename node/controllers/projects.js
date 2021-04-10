@@ -1,4 +1,5 @@
 const Projects = require("../models/projects");
+const cleanRequest = require("../util/clean-request");
 
 exports.getProjects = (req, res, next) => {
   Projects.findAll({
@@ -35,13 +36,6 @@ exports.updateProject = (req, res, next) => {
   const projId = req.params.id;
   //remove all the null or undefined fields
   const request = cleanRequest(req.body);
-  /*   const updatedClientId = req.body.client_id;
-  const updatedProjectStatusId = req.body.project_status_id;
-  const updatedName = req.body.name;
-  const updatedDescription = req.body.description;
-  const updatedStartDate = req.body.start_date;
-  const updatedEndDate = req.body.end_date;
-  const updatedBillable = req.body.billable; */
 
   Projects.findByPk(projId)
     .then((project) => {
@@ -51,12 +45,6 @@ exports.updateProject = (req, res, next) => {
       return res.send({ response: updatedProject });
     })
     .catch((err) => console.log("error in updating project!", err));
-};
-
-const cleanRequest = (request) => {
-  return Object.fromEntries(
-    Object.entries(request).filter(([_, v]) => v != null && v != undefined)
-  );
 };
 
 exports.deleteProject = (req, res, next) => {
