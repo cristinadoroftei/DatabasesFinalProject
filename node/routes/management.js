@@ -2,6 +2,7 @@ const express = require("express");
 
 const projectsController = require("../controllers/projects");
 const tasksController = require("../controllers/tasks");
+const invoicesController = require("../controllers/invoices");
 
 const router = express.Router();
 
@@ -18,6 +19,8 @@ router.get(
   "/projects/:id/task_statuses",
   tasksController.getTaskStatusesByProjectId
 );
+
+router.get("/invoices", invoicesController.getInvoices);
 
 //POST
 router.post("/projects", projectsController.createProject);
