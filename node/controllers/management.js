@@ -1,4 +1,5 @@
 const Projects = require("../models/projects");
+
 const Tasks = require("../models/tasks");
 const TaskStatuses = require("../models/task_statuses");
 
@@ -34,6 +35,14 @@ exports.getTasksByProjectId = (req, res, next) => {
   });
 };
 
-/* exports.getTaskStatusesByProjectId = (req, res, next) => {
+exports.getTaskStatusesByProjectId = (req, res, next) => {
   const projId = req.params.projectId;
-}; */
+
+  Projects.findByPk(projId)
+    .then((project) => {
+      return project.getTaskStatuses();
+    })
+    .then((taskStatuses) => {
+      res.send({ taskStatuses: taskStatuses });
+    });
+};

@@ -23,6 +23,14 @@ module.exports = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    project_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "projects",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -39,6 +47,11 @@ module.exports = sequelize.define(
         name: "FKTask_Statu982149",
         using: "BTREE",
         fields: [{ name: "status_category_id" }],
+      },
+      {
+        name: "task_statuses_project_id_foreign_idx",
+        using: "BTREE",
+        fields: [{ name: "project_id" }],
       },
     ],
   }

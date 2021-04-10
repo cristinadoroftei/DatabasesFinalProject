@@ -24,9 +24,9 @@ const App = ({ location }) => {
           <NavbarBrand href="/">
             <img
               alt=""
-              src="/red-hat.svg"
-              width="30"
-              height="30"
+              src="/dragon.svg"
+              width="37"
+              height="37"
               className="d-inline-block align-top"
             />{" "}
           </NavbarBrand>

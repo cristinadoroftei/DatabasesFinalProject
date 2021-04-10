@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const errorController = require("./controllers/error");
 const sequelize = require("./util/database");
 
+//initialize models to get all the cool magic methods: https://medium.com/@julianne.marik/sequelize-associations-magic-methods-c72008db91c9
+const initModels = require("./models/init-models")();
+
 const Persons = require("./models/persons");
 
 const managementRoutes = require("./routes/management");

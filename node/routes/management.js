@@ -13,4 +13,9 @@ router.get(
   managementController.getTasksByProjectId
 );
 
+router.get(
+  "/task_statuses_by_project_id/:projectId",
+  managementController.getTaskStatusesByProjectId
+);
+
 module.exports = router;
