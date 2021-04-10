@@ -15,12 +15,13 @@ exports.getProjects = (req, res, next) => {
 };
 
 exports.createProject = (req, res, next) => {
-    console.log(req.body);
-    // Projects.create({
-    //     company_id: req.user.company_id,
-    //     client_id: req.query.client_id
-    // });
-    res.send({message: 'Success'})
+  Projects.create({
+    company_id: req.user.company_id,
+    client_id: req.body.client_id,
+    project_status_id: req.body.project_status_id,
+    name: req.body.name,
+    billable: req.body.billable,
+  }).then((project) => res.send({ response: project }));
 };
 
 // exports.getProjectsById = (req, res, next) => {
