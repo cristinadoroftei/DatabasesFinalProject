@@ -23,22 +23,24 @@ const TasksList = ({ projectId }) => {
   };
 
   useEffect(() => {
-    fetch(`/tasks_by_project_id/${projectId}`)
+    fetch(`/projects/${projectId}/tasks`)
       .then((res) => {
         return res.json();
       })
       .then((res) => {
         setTasks(res.tasks);
       });
-
-    fetch(`/task_statuses_by_project_id/${projectId}`)
+      
+      fetch(`/projects/${projectId}/task_statuses`)
       .then((res) => {
         return res.json();
       })
       .then((res) => {
+        console.log('tasks', res);
         setTaskStatuses(res.taskStatuses);
       });
   }, [projectId]);
+
 
   return (
     <div>
