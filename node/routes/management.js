@@ -49,4 +49,9 @@ router.delete("/projects/:id", projectsController.deleteProject);
 
 router.delete("/invoices/:id", invoicesController.deleteInvoice);
 
+router.delete(
+  "/project_statuses/:id",
+  projectStatusesController.deleteProjectStatus
+);
+
 module.exports = router;

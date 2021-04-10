@@ -34,3 +34,15 @@ exports.updateProjectStatus = (req, res, next) => {
     })
     .catch((err) => console.log("error in updating project status!", err));
 };
+
+exports.deleteProjectStatus = (req, res, next) => {
+  const projectStatusId = req.params.id;
+  ProjectStatuses.findByPk(projectStatusId)
+    .then((projectStatus) => {
+      return projectStatus.destroy();
+    })
+    .then(() => {
+      return res.send({ response: "project status deleted" });
+    })
+    .catch((err) => console.log("error in deleting project status", err));
+};
