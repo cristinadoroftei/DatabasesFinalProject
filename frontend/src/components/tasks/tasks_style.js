@@ -9,6 +9,9 @@ export const TaskStatusWrapper = styled.div`
   background-color: #f3f3f3;
   margin: 10px 10px;
   border-radius: 7px;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const TaskStatusTitle = styled.div`

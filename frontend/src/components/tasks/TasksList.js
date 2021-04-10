@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProjectViewHeader from "../projects/ProjectViewHeader";
 import TaskCard from "./TaskCard";
+import TaskModal from "./TaskModal";
 import {
   TaskListWrapper,
   TaskStatusTitle,
@@ -10,6 +11,9 @@ import {
 const TasksList = ({ projectId }) => {
   const [tasks, setTasks] = useState(null);
   const [taskStatuses, setTaskStatuses] = useState(null);
+  const [modalShow, setModalShow] = useState(false);
+
+  console.log("modalShow!", modalShow);
 
   const getTaskStatus = (task) => {
     const taskStatus = taskStatuses.find(
@@ -43,16 +47,26 @@ const TasksList = ({ projectId }) => {
         {taskStatuses &&
           tasks &&
           taskStatuses.map((taskStatus) => (
-            <TaskStatusWrapper key={taskStatus.id}>
-              <TaskStatusTitle>{taskStatus.name}</TaskStatusTitle>
-              {tasks.map((task) => {
-                return (
-                  getTaskStatus(task) === taskStatus.name && (
-                    <TaskCard key={task.id} task={task} />
-                  )
-                );
-              })}
-            </TaskStatusWrapper>
+            <>
+              <TaskStatusWrapper key={taskStatus.id}>
+                <TaskStatusTitle>{taskStatus.name}</TaskStatusTitle>
+                {tasks.map((task) => {
+                  return (
+                    getTaskStatus(task) === taskStatus.name && (
+                      <TaskCard
+                        handleTaskCardClick={() => setModalShow(true)}
+                        key={task.id}
+                        task={task}
+                      />
+                    )
+                  );
+                })}
+              </TaskStatusWrapper>
+              {/* <TaskModal
+                modalShow={modalShow}
+                handleModalHide={() => setModalShow(false)}
+              /> */}
+            </>
           ))}
       </TaskListWrapper>
     </div>
