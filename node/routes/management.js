@@ -3,6 +3,7 @@ const express = require("express");
 const projectsController = require("../controllers/projects");
 const tasksController = require("../controllers/tasks");
 const invoicesController = require("../controllers/invoices");
+const projectStatusesController = require("../controllers/projectStatuses");
 
 const router = express.Router();
 
@@ -23,6 +24,8 @@ router.get(
 router.get("/invoices", invoicesController.getInvoices);
 
 router.get("/invoices/:id", invoicesController.getInvoice);
+
+router.get("/project_statuses", projectStatusesController.getProjectStatuses);
 
 //POST
 router.post("/projects", projectsController.createProject);
