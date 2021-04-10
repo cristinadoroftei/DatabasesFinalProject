@@ -56,3 +56,15 @@ exports.updateProject = (req, res, next) => {
     })
     .catch((err) => console.log("error in updating project!", err));
 };
+
+exports.deleteProject = (req, res, next) => {
+  const projId = req.params.id;
+  Projects.findByPk(projId)
+    .then((project) => {
+      return project.destroy();
+    })
+    .then(() => {
+      return res.send({ response: "project deleted" });
+    })
+    .catch((err) => console.log("error in deleting project", err));
+};

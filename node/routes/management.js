@@ -25,4 +25,7 @@ router.post("/projects", projectsController.createProject);
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
 
+//DELETE
+router.delete("/projects/:id", projectsController.deleteProject);
+
 module.exports = router;
