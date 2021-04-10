@@ -39,6 +39,11 @@ router.put("/projects/:id", projectsController.updateProject);
 
 router.put("/invoices/:id", invoicesController.updateInvoice);
 
+router.put(
+  "/project_statuses/:id",
+  projectStatusesController.updateProjectStatus
+);
+
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 

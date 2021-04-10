@@ -21,3 +21,16 @@ exports.createProjectStatus = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.updateProjectStatus = (req, res, next) => {
+  const projectStatusId = req.params.id;
+
+  ProjectStatuses.findByPk(projectStatusId)
+    .then((projectStatus) => {
+      return projectStatus.update(req.body);
+    })
+    .then((updatedProjectStatus) => {
+      return res.send({ response: updatedProjectStatus });
+    })
+    .catch((err) => console.log("error in updating project status!", err));
+};
