@@ -3,6 +3,7 @@ const express = require("express");
 const projectsController = require("../controllers/projects");
 const tasksController = require("../controllers/tasks");
 const invoicesController = require("../controllers/invoices");
+const projectStatusesController = require("../controllers/projectStatuses");
 
 const router = express.Router();
 
@@ -24,20 +25,33 @@ router.get("/invoices", invoicesController.getInvoices);
 
 router.get("/invoices/:id", invoicesController.getInvoice);
 
+router.get("/project_statuses", projectStatusesController.getProjectStatuses);
+
 //POST
 router.post("/projects", projectsController.createProject);
+
+router.post("/invoices", invoicesController.createInvoice);
+
+router.post("/project_statuses", projectStatusesController.createProjectStatus);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
 
 router.put("/invoices/:id", invoicesController.updateInvoice);
 
+router.put(
+  "/project_statuses/:id",
+  projectStatusesController.updateProjectStatus
+);
+
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 
 router.delete("/invoices/:id", invoicesController.deleteInvoice);
 
-// invoice routes
-router.post("/invoices", invoicesController.createInvoice);
+router.delete(
+  "/project_statuses/:id",
+  projectStatusesController.deleteProjectStatus
+);
 
 module.exports = router;

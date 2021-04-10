@@ -130,6 +130,14 @@ function initModels() {
     as: "taskStatuses",
     foreignKey: "project_id",
   });
+  project_statuses.belongsTo(companies, {
+    as: "companies",
+    foreignKey: "company_id",
+  });
+  companies.hasMany(project_statuses, {
+    as: "projectStatuses",
+    foreignKey: "company_id",
+  });
   time_registrations.belongsTo(tasks, { as: "task", foreignKey: "task_id" });
   tasks.hasMany(time_registrations, {
     as: "timeRegistrations",
