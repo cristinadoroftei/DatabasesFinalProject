@@ -7,7 +7,9 @@ const invoicesController = require('../controllers/invoices');
 const router = express.Router();
 
 //GET
-// router.get("/projects/new", projectsController.createProject); 
+// router.get("/projects/new", projectsController.createProject); 4
+
+router.get("/projects", projectsController.getProjects);
 
 router.get("/projects/:id", projectsController.getProjectsById);
 
