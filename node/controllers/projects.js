@@ -1,5 +1,4 @@
 const Projects = require("../models/projects");
-const cleanRequest = require("../util/clean-request");
 
 exports.getProjects = (req, res, next) => {
   Projects.findAll({
