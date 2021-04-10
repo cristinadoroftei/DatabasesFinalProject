@@ -34,7 +34,7 @@ exports.getProjectsById = (req, res, next) => {
 
 exports.updateProject = (req, res, next) => {
   const projId = req.params.id;
-  //remove all the null or undefined fields
+  //remove all the undefined fields
   const request = cleanRequest(req.body);
 
   Projects.findByPk(projId)
