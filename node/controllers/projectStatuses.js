@@ -11,3 +11,13 @@ exports.getProjectStatuses = (req, res, next) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.createProjectStatus = (req, res, next) => {
+  ProjectStatuses.create({
+    ...req.body,
+  })
+    .then((projectStatus) => {
+      return res.send({ response: projectStatus });
+    })
+    .catch((err) => console.log(err));
+};

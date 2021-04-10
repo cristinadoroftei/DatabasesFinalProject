@@ -30,6 +30,10 @@ router.get("/project_statuses", projectStatusesController.getProjectStatuses);
 //POST
 router.post("/projects", projectsController.createProject);
 
+router.post("/invoices", invoicesController.createInvoice);
+
+router.post("/project_statuses", projectStatusesController.createProjectStatus);
+
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
 
@@ -39,8 +43,5 @@ router.put("/invoices/:id", invoicesController.updateInvoice);
 router.delete("/projects/:id", projectsController.deleteProject);
 
 router.delete("/invoices/:id", invoicesController.deleteInvoice);
-
-// invoice routes
-router.post("/invoices", invoicesController.createInvoice);
 
 module.exports = router;
