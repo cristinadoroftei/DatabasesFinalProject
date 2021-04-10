@@ -34,12 +34,10 @@ exports.getProjectsById = (req, res, next) => {
 
 exports.updateProject = (req, res, next) => {
   const projId = req.params.id;
-  //remove all the undefined fields
-  const request = cleanRequest(req.body);
 
   Projects.findByPk(projId)
     .then((project) => {
-      return project.update(request);
+      return project.update(req.body);
     })
     .then((updatedProject) => {
       return res.send({ response: updatedProject });
