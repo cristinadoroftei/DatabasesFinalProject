@@ -33,28 +33,30 @@ exports.getProjectsById = (req, res, next) => {
 
 exports.updateProject = (req, res, next) => {
   const projId = req.params.id;
-  const updatedClientId = req.body.client_id;
+  //remove all the null or undefined fields
+  const request = cleanRequest(req.body);
+  /*   const updatedClientId = req.body.client_id;
   const updatedProjectStatusId = req.body.project_status_id;
   const updatedName = req.body.name;
   const updatedDescription = req.body.description;
   const updatedStartDate = req.body.start_date;
   const updatedEndDate = req.body.end_date;
-  const updatedBillable = req.body.billable;
+  const updatedBillable = req.body.billable; */
+
   Projects.findByPk(projId)
     .then((project) => {
-      project.client_id = updatedClientId;
-      project.project_status_id = updatedProjectStatusId;
-      project.name = updatedName;
-      project.description = updatedDescription;
-      project.start_date = updatedStartDate;
-      project.end_date = updatedEndDate;
-      project.billable = updatedBillable;
-      return project.save();
+      return project.update(request);
     })
     .then((updatedProject) => {
       return res.send({ response: updatedProject });
     })
     .catch((err) => console.log("error in updating project!", err));
+};
+
+const cleanRequest = (request) => {
+  return Object.fromEntries(
+    Object.entries(request).filter(([_, v]) => v != null && v != undefined)
+  );
 };
 
 exports.deleteProject = (req, res, next) => {
