@@ -24,9 +24,9 @@ exports.createProject = (req, res, next) => {
   }).then((project) => res.send({ response: project }));
 };
 
-// exports.getProjectsById = (req, res, next) => {
-//   const projId = req.params.id;
-//   Projects.findByPk(projId).then((project) => {
-//     res.send({ project: project });
-//   });
-// };
+exports.getProjectsById = (req, res, next) => {
+  const projId = req.params.id;
+  Projects.findByPk(projId).then((project) => {
+    res.send({ project: project });
+  });
+};
