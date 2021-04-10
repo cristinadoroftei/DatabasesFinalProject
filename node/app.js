@@ -50,7 +50,7 @@ sequelize
         password: "nonono",
         internal_cost: 1,
       });
-    };
+    }
     return person;
   })
   .then(() => {

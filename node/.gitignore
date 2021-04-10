@@ -1,5 +1,5 @@
 # dependencies
 /node_modules
 package-lock.json
-/config/config.json
-/ultil.database.js
+**/config/config.js
+**/util/database.js
