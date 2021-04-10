@@ -1,21 +1,18 @@
 const express = require("express");
 
-const managementController = require("../controllers/management");
+const projectsController = require('../controllers/projects');
+const tasksController = require('../controllers/tasks');
 
 const router = express.Router();
 
-router.get("/getText", managementController.getText);
+router.get("/projects", projectsController.getProjects);
+// router.get("/projects/new", projectsController.createProject);
+router.post("/projects", projectsController.createProject);
 
-router.get("/project/:projectId", managementController.getProjectById);
+// router.get("/projects/:id", projectsController.getProjectsById);
 
-router.get(
-  "/tasks_by_project_id/:projectId",
-  managementController.getTasksByProjectId
-);
+router.get("/projects/:id/tasks", tasksController.getTasksByProjectId);
 
-router.get(
-  "/task_statuses_by_project_id/:projectId",
-  managementController.getTaskStatusesByProjectId
-);
+router.get("/projects/:id/task_statuses", tasksController.getTaskStatusesByProjectId);
 
 module.exports = router;
