@@ -4,6 +4,7 @@ const projectsController = require("../controllers/projects");
 const tasksController = require("../controllers/tasks");
 const invoicesController = require("../controllers/invoices");
 const projectStatusesController = require("../controllers/projectStatuses");
+const personsController = require("../controllers/persons");
 
 const router = express.Router();
 
@@ -27,6 +28,10 @@ router.get("/invoices/:id", invoicesController.getInvoice);
 
 router.get("/project_statuses", projectStatusesController.getProjectStatuses);
 
+router.get("/persons", personsController.getPersons);
+
+router.get("/persons/:id", personsController.getPersonById);
+
 //POST
 router.post("/projects", projectsController.createProject);
 
@@ -35,6 +40,8 @@ router.post("/invoices", invoicesController.createInvoice);
 router.post("/project_statuses", projectStatusesController.createProjectStatus);
 
 router.post("/tasks", tasksController.createTask);
+
+router.post("/persons", personsController.createPerson);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
@@ -48,6 +55,8 @@ router.put(
 
 router.put("/tasks/:id", tasksController.updateTask);
 
+router.put("/persons/:id", personsController.updatePerson);
+
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 
@@ -59,5 +68,7 @@ router.delete(
 );
 
 router.delete("/tasks/:id", tasksController.deleteTask);
+
+router.delete("/persons/:id", personsController.deletePerson);
 
 module.exports = router;

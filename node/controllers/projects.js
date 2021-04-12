@@ -2,15 +2,13 @@ const Projects = require("../models/projects");
 
 exports.getProjects = (req, res, next) => {
   Projects.findAll({
-    where: {
-      company_id: req.user.company_id,
-    },
+    where: { company_id: req.user.company_id },
   })
     .then((projects) => {
-      res.send({ projects: projects });
+      res.send({ response: projects });
     })
     .catch((err) => {
-      console.log(err);
+      console.log("Error when fetching projects!", err);
     });
 };
 
@@ -27,7 +25,7 @@ exports.createProject = (req, res, next) => {
 exports.getProjectsById = (req, res, next) => {
   const projId = req.params.id;
   Projects.findByPk(projId).then((project) => {
-    res.send({ project: project });
+    res.send({ response: project });
   });
 };
 
