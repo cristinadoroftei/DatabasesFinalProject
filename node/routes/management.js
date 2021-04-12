@@ -10,8 +10,6 @@ const taskStatusesController = require("../controllers/taskStatuses");
 
 const router = express.Router();
 
-// Test
-
 //GET
 
 router.get("/projects", projectsController.getProjects);

@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 
+const session = require("express-session");
+const MYSQLSTORE = require("express-mysql-session")(session);
+const options = require("./util/store");
+const sessionStore = new MYSQLSTORE(options);
+
 const errorController = require("./controllers/error");
 const sequelize = require("./util/database");
 
@@ -10,16 +15,28 @@ const initModels = require("./models/init-models")();
 const Persons = require("./models/persons");
 
 const managementRoutes = require("./routes/management");
+const authRoutes = require("./routes/authentication");
 
 app.use(express.urlencoded());
 app.use(express.json());
+app.use(
+  session({
+    key: "session_cookie_name",
+    secret: "session_cookie_secret",
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use((req, res, next) => {
-  Persons.findByPk(3)
-    .then((user) => {
+  if (!req.session.person) return next();
+  console.log(req.session);
+  Persons.findOne({ where: { username: req.session.person.username } })
+    .then((person) => {
       //we can simply add a new field to the request object. We jsut have to make sure we don't overwrite an existing one.
       //ps: the user we are retrieving is not just a JS object. It's a sequelize object
-      req.user = user;
+      req.person = person;
       next();
     })
     .catch((err) => {
@@ -27,6 +44,7 @@ app.use((req, res, next) => {
     });
 });
 
+app.use(authRoutes);
 app.use(managementRoutes);
 
 //keep this always last

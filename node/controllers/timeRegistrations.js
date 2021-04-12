@@ -15,7 +15,7 @@ exports.getTimeRegistrationByTaskId = (req, res, next) => {
 exports.createTimeRegistration = (req, res, next) => {
   TimeRegistrations.create({
     task_id: req.body.task_id,
-    person_id: req.user.id,
+    person_id: req.person.id,
     minutes_registered: req.body.minutes_registered,
     time_reg_date: req.body.time_reg_date,
   })

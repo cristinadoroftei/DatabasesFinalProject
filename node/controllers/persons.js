@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 exports.getPersons = (req, res, next) => {
   Persons.findAll({
-    where: { company_id: req.user.company_id },
+    where: { company_id: req.person.company_id },
   })
     .then((persons) => res.send({ response: persons }))
     .catch((err) => console.log("Error when fetching persons!", err));
@@ -20,7 +20,7 @@ exports.getPersonById = (req, res, next) => {
 
 exports.createPerson = (req, res, next) => {
   Persons.create({
-    company_id: req.user.company_id,
+    company_id: req.person.company_id,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     user_type: req.body.user_type,
