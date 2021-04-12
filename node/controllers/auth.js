@@ -35,7 +35,6 @@ exports.login = (req, res, next) => {
           console.log("Error!", err);
           next(err);
         } else {
-          console.log("Login", req.session);
           res.sendStatus(200);
         }
       });
@@ -51,7 +50,6 @@ exports.logout = (req, res, next) => {
       console.log("Error when logging out!");
       return res.sendStatus(404);
     } else {
-      console.log("Logout", req.session);
       return res.sendStatus(200);
     }
   });

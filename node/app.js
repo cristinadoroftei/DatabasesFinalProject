@@ -31,7 +31,6 @@ app.use(
 
 app.use((req, res, next) => {
   if (!req.session.person) return next();
-  console.log(req.session);
   Persons.findOne({ where: { username: req.session.person.username } })
     .then((person) => {
       //we can simply add a new field to the request object. We jsut have to make sure we don't overwrite an existing one.
