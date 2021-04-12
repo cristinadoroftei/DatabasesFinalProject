@@ -5,7 +5,7 @@ const Projects = require("../models/projects");
 exports.getInvoices = (req, res, next) => {
   Projects.findAll({
     where: {
-      company_id: req.user.company_id,
+      company_id: req.person.company_id,
     },
     //also get the invoices for each found project
     include: [{ model: Invoices, as: "invoices" }],

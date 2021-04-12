@@ -2,7 +2,7 @@ const ProjectStatuses = require("../models/project_statuses");
 const Companies = require("../models/companies");
 
 exports.getProjectStatuses = (req, res, next) => {
-  Companies.findByPk(req.user.company_id)
+  Companies.findByPk(req.person.company_id)
     .then((company) => {
       return company.getProjectStatuses();
     })

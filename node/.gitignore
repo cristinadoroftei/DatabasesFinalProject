@@ -3,3 +3,4 @@
 package-lock.json
 **/config/config.json
 **/util/database.js
+**/util/store.js
