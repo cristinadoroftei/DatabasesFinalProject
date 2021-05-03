@@ -7,6 +7,8 @@ const projectStatusesController = require("../controllers/projectStatuses");
 const personsController = require("../controllers/persons");
 const timeRegistrationsController = require("../controllers/timeRegistrations");
 const taskStatusesController = require("../controllers/taskStatuses");
+const companiesController = require("../controllers/companies");
+const companies = require("../models/companies");
 
 const router = express.Router();
 
@@ -38,6 +40,8 @@ router.get(
   taskStatusesController.getTaskStatusesByProjectId
 );
 
+router.get("/companies/:id", companiesController.getCompany);
+
 //POST
 router.post("/projects", projectsController.createProject);
 
@@ -55,6 +59,8 @@ router.post(
 );
 
 router.post("/task_statuses", taskStatusesController.createTaskStatus);
+
+router.post("/companies", companiesController.createCompany);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
@@ -77,6 +83,8 @@ router.put(
 
 router.put("/task_statuses/:id", taskStatusesController.updateTaskStatus);
 
+router.put("/companies/:id", companiesController.updateCompany);
+
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 
@@ -97,5 +105,7 @@ router.delete(
 );
 
 router.delete("/task_statuses/:id", taskStatusesController.deleteTaskStatus);
+
+router.delete("/companies/:id", companiesController.deleteCompany);
 
 module.exports = router;
