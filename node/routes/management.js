@@ -9,6 +9,7 @@ const timeRegistrationsController = require("../controllers/timeRegistrations");
 const taskStatusesController = require("../controllers/taskStatuses");
 const companiesController = require("../controllers/companies");
 const teamsController = require("../controllers/teams");
+const isAdmin = require("../util/is-admin");
 const router = express.Router();
 
 //GET
@@ -25,9 +26,9 @@ router.get("/invoices/:id", invoicesController.getInvoice);
 
 router.get("/project_statuses", projectStatusesController.getProjectStatuses);
 
-router.get("/persons", personsController.getPersons);
+router.get("/persons", isAdmin, personsController.getPersons);
 
-router.get("/persons/:id", personsController.getPersonById);
+router.get("/persons/:id", isAdmin, personsController.getPersonById);
 
 router.get(
   "/time_registrations/:id/task",
@@ -39,7 +40,7 @@ router.get(
   taskStatusesController.getTaskStatusesByProjectId
 );
 
-router.get("/companies/:id", companiesController.getCompany);
+router.get("/companies/:id", isAdmin, companiesController.getCompany);
 
 router.get("/teams/:id/company", teamsController.getTeamsByCompanyId);
 
@@ -52,7 +53,7 @@ router.post("/project_statuses", projectStatusesController.createProjectStatus);
 
 router.post("/tasks", tasksController.createTask);
 
-router.post("/persons", personsController.createPerson);
+router.post("/persons", isAdmin, personsController.createPerson);
 
 router.post(
   "/time_registrations",
@@ -61,9 +62,9 @@ router.post(
 
 router.post("/task_statuses", taskStatusesController.createTaskStatus);
 
-router.post("/companies", companiesController.createCompany);
+router.post("/companies", isAdmin, companiesController.createCompany);
 
-router.post("/teams", teamsController.createTeam);
+router.post("/teams", isAdmin, teamsController.createTeam);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
@@ -77,7 +78,7 @@ router.put(
 
 router.put("/tasks/:id", tasksController.updateTask);
 
-router.put("/persons/:id", personsController.updatePerson);
+router.put("/persons/:id", isAdmin, personsController.updatePerson);
 
 router.put(
   "/time_registrations/:id",
@@ -86,9 +87,9 @@ router.put(
 
 router.put("/task_statuses/:id", taskStatusesController.updateTaskStatus);
 
-router.put("/companies/:id", companiesController.updateCompany);
+router.put("/companies/:id", isAdmin, companiesController.updateCompany);
 
-router.put("/teams/:id", teamsController.updateTeam);
+router.put("/teams/:id", isAdmin, teamsController.updateTeam);
 
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
@@ -102,7 +103,7 @@ router.delete(
 
 router.delete("/tasks/:id", tasksController.deleteTask);
 
-router.delete("/persons/:id", personsController.deletePerson);
+router.delete("/persons/:id", isAdmin, personsController.deletePerson);
 
 router.delete(
   "/time_registrations/:id",
@@ -111,8 +112,8 @@ router.delete(
 
 router.delete("/task_statuses/:id", taskStatusesController.deleteTaskStatus);
 
-router.delete("/companies/:id", companiesController.deleteCompany);
+router.delete("/companies/:id", isAdmin, companiesController.deleteCompany);
 
-router.delete("/teams/:id", teamsController.deleteTeam);
+router.delete("/teams/:id", isAdmin, teamsController.deleteTeam);
 
 module.exports = router;
