@@ -17,7 +17,10 @@ exports.getInvoices = (req, res, next) => {
       );
       res.send({ response: invoices });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.getInvoice = (req, res, next) => {
@@ -26,7 +29,10 @@ exports.getInvoice = (req, res, next) => {
     .then((invoice) => {
       return res.send({ response: invoice });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.updateInvoice = (req, res, next) => {
@@ -38,7 +44,10 @@ exports.updateInvoice = (req, res, next) => {
     .then((updatedInvoice) => {
       return res.send({ response: updatedInvoice });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.deleteInvoice = (req, res, next) => {
@@ -48,13 +57,21 @@ exports.deleteInvoice = (req, res, next) => {
       return invoice.destroy();
     })
     .then(() => {
-      return res.send({ response: "invoice deleted" });
+      return res.sendStatus(200);
     })
-    .catch((err) => console.log("error in deleting invoice", err));
+    .catch((err) => {
+      console.log("error in deleting invoice", err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.createInvoice = (req, res, next) => {
   Invoices.create({
     ...req.body,
-  }).then((invoice) => res.send({ response: invoice }));
+  })
+    .then((invoice) => res.send({ response: invoice }))
+    .catch((err) => {
+      console.log("Error when creating invoice", err);
+      return res.sendStatus(400);
+    });
 };

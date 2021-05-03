@@ -9,6 +9,7 @@ exports.getProjects = (req, res, next) => {
     })
     .catch((err) => {
       console.log("Error when fetching projects!", err);
+      return res.sendStatus(400);
     });
 };
 
@@ -19,14 +20,24 @@ exports.createProject = (req, res, next) => {
     project_status_id: req.body.project_status_id,
     name: req.body.name,
     billable: req.body.billable,
-  }).then((project) => res.send({ response: project }));
+  })
+    .then((project) => res.send({ response: project }))
+    .catch((err) => {
+      console.log("Error when creating a new project!", err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.getProjectsById = (req, res, next) => {
   const projId = req.params.id;
-  Projects.findByPk(projId).then((project) => {
-    res.send({ response: project });
-  });
+  Projects.findByPk(projId)
+    .then((project) => {
+      res.send({ response: project });
+    })
+    .catch((err) => {
+      console.log("Error when getting project by id!", err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.updateProject = (req, res, next) => {
@@ -39,7 +50,10 @@ exports.updateProject = (req, res, next) => {
     .then((updatedProject) => {
       return res.send({ response: updatedProject });
     })
-    .catch((err) => console.log("error in updating project!", err));
+    .catch((err) => {
+      console.log("error in updating project!", err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.deleteProject = (req, res, next) => {
@@ -49,7 +63,10 @@ exports.deleteProject = (req, res, next) => {
       return project.destroy();
     })
     .then(() => {
-      return res.send({ response: "project deleted" });
+      return res.sendStatus(200);
     })
-    .catch((err) => console.log("error in deleting project", err));
+    .catch((err) => {
+      console.log("error in deleting project", err);
+      return res.sendStatus(400);
+    });
 };
