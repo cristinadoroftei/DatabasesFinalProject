@@ -63,6 +63,8 @@ router.post("/task_statuses", taskStatusesController.createTaskStatus);
 
 router.post("/companies", companiesController.createCompany);
 
+router.post("/teams", teamsController.createTeam);
+
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
 
