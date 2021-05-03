@@ -8,8 +8,7 @@ const personsController = require("../controllers/persons");
 const timeRegistrationsController = require("../controllers/timeRegistrations");
 const taskStatusesController = require("../controllers/taskStatuses");
 const companiesController = require("../controllers/companies");
-const companies = require("../models/companies");
-
+const teamsController = require("../controllers/teams");
 const router = express.Router();
 
 //GET
@@ -42,6 +41,8 @@ router.get(
 
 router.get("/companies/:id", companiesController.getCompany);
 
+router.get("/teams/:id/company", teamsController.getTeamsByCompanyId);
+
 //POST
 router.post("/projects", projectsController.createProject);
 
@@ -61,6 +62,8 @@ router.post(
 router.post("/task_statuses", taskStatusesController.createTaskStatus);
 
 router.post("/companies", companiesController.createCompany);
+
+router.post("/teams", teamsController.createTeam);
 
 //PUT
 router.put("/projects/:id", projectsController.updateProject);
@@ -85,6 +88,8 @@ router.put("/task_statuses/:id", taskStatusesController.updateTaskStatus);
 
 router.put("/companies/:id", companiesController.updateCompany);
 
+router.put("/teams/:id", teamsController.updateTeam);
+
 //DELETE
 router.delete("/projects/:id", projectsController.deleteProject);
 
@@ -107,5 +112,7 @@ router.delete(
 router.delete("/task_statuses/:id", taskStatusesController.deleteTaskStatus);
 
 router.delete("/companies/:id", companiesController.deleteCompany);
+
+router.delete("/teams/:id", teamsController.deleteTeam);
 
 module.exports = router;
