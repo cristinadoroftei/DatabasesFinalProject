@@ -1,5 +1,5 @@
-const ProjectStatuses = require("../models/project_statuses");
-const Companies = require("../models/companies");
+const ProjectStatuses = require('../models/project_statuses');
+const Companies = require('../models/companies');
 
 exports.getProjectStatuses = (req, res, next) => {
   Companies.findByPk(req.person.company_id)
@@ -9,7 +9,10 @@ exports.getProjectStatuses = (req, res, next) => {
     .then((projectStatuses) => {
       return res.send({ response: projectStatuses });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.createProjectStatus = (req, res, next) => {
@@ -19,7 +22,10 @@ exports.createProjectStatus = (req, res, next) => {
     .then((projectStatus) => {
       return res.send({ response: projectStatus });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.updateProjectStatus = (req, res, next) => {
@@ -32,7 +38,10 @@ exports.updateProjectStatus = (req, res, next) => {
     .then((updatedProjectStatus) => {
       return res.send({ response: updatedProjectStatus });
     })
-    .catch((err) => console.log("error in updating project status!", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.deleteProjectStatus = (req, res, next) => {
@@ -42,7 +51,10 @@ exports.deleteProjectStatus = (req, res, next) => {
       return projectStatus.destroy();
     })
     .then(() => {
-      return res.send({ response: "project status deleted" });
+      return res.sendStatus(200);
     })
-    .catch((err) => console.log("error in deleting project status", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };

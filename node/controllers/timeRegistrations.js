@@ -1,15 +1,13 @@
-const TimeRegistrations = require("../models/time_registrations");
+const TimeRegistrations = require('../models/time_registrations');
 
 exports.getTimeRegistrationByTaskId = (req, res, next) => {
   const taskId = req.params.id;
   TimeRegistrations.findAll({ where: { task_id: taskId } })
     .then((timeRegistrations) => res.send({ response: timeRegistrations }))
-    .catch((err) =>
-      console.log(
-        `Error when fetching timeRegistrations for task with id: ${taskId}!`,
-        err
-      )
-    );
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.createTimeRegistration = (req, res, next) => {
@@ -20,7 +18,10 @@ exports.createTimeRegistration = (req, res, next) => {
     time_reg_date: req.body.time_reg_date,
   })
     .then((timeRegistration) => res.send({ response: timeRegistration }))
-    .catch((err) => console.log("Error when creating timeRegistration", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.updateTimeRegistration = (req, res, next) => {
@@ -30,13 +31,19 @@ exports.updateTimeRegistration = (req, res, next) => {
     .then((updatedTimeRegistration) =>
       res.send({ response: updatedTimeRegistration })
     )
-    .catch((err) => console.log("Error when updating timeRegistration!", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.deleteTimeRegistration = (req, res, next) => {
   const timeRegistrationId = req.params.id;
   TimeRegistrations.findByPk(timeRegistrationId)
     .then((timeRegistration) => timeRegistration.destroy())
-    .then(() => res.send({ response: "Time registration deleted!" }))
-    .catch((err) => console.log("Error when deleting time registration!", err));
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
