@@ -19,11 +19,7 @@ exports.getTasksByProjectId = (req, res, next) => {
 };
 
 exports.createTask = (req, res, next) => {
-  Tasks.create({
-    project_id: req.body.project_id,
-    task_status_id: req.body.task_status_id,
-    name: req.body.name,
-  })
+  Tasks.create(req.body)
     .then((task) => res.send({ response: task }))
     .catch((err) => {
       console.log(err);
@@ -77,3 +73,7 @@ exports.getTaskStatusesByProjectId = (req, res, next) => {
       return res.sendStatus(400);
     });
 };
+
+// exports.assignPersonToTask = (req, res, next) => {
+//   const personId = req.params.id || req.person.id
+// };

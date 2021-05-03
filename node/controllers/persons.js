@@ -1,5 +1,5 @@
-const Persons = require("../models/persons");
-const bcrypt = require("bcrypt");
+const Persons = require('../models/persons');
+const bcrypt = require('bcrypt');
 
 exports.getPersons = (req, res, next) => {
   Persons.findAll({
@@ -7,7 +7,7 @@ exports.getPersons = (req, res, next) => {
   })
     .then((persons) => res.send({ response: persons }))
     .catch((err) => {
-      console.log("Error when fetching persons!", err);
+      console.log('Error when fetching persons!', err);
       return res.sendStatus(400);
     });
 };
@@ -24,17 +24,12 @@ exports.getPersonById = (req, res, next) => {
 
 exports.createPerson = (req, res, next) => {
   Persons.create({
-    company_id: req.person.company_id,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    user_type: req.body.user_type,
-    username: req.body.username,
+    ...req.body,
     password: bcrypt.hashSync(req.body.password, 12),
-    internal_cost: req.body.internal_cost,
   })
     .then((person) => res.send({ response: person }))
     .catch((err) => {
-      console.log("Error when creating person", err);
+      console.log('Error when creating person', err);
       return res.sendStatus(400);
     });
 };
@@ -45,7 +40,7 @@ exports.updatePerson = (req, res, next) => {
     .then((person) => person.update(req.body))
     .then((updatedPerson) => res.send({ response: updatedPerson }))
     .catch((err) => {
-      console.log("Error when updating person!", err);
+      console.log('Error when updating person!', err);
       return res.sendStatus(400);
     });
 };
@@ -56,7 +51,7 @@ exports.deletePerson = (req, res, next) => {
     .then((person) => person.destroy())
     .then(() => res.sendStatus(200))
     .catch((err) => {
-      console.log("Error when deleting person!", err);
+      console.log('Error when deleting person!', err);
       return res.sendStatus(400);
     });
 };

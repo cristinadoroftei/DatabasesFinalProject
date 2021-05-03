@@ -1,6 +1,5 @@
-const Companies = require("../models/companies");
-const Invoices = require("../models/invoices");
-const Projects = require("../models/projects");
+const Invoices = require('../models/invoices');
+const Projects = require('../models/projects');
 
 exports.getInvoices = (req, res, next) => {
   Projects.findAll({
@@ -8,7 +7,7 @@ exports.getInvoices = (req, res, next) => {
       company_id: req.person.company_id,
     },
     //also get the invoices for each found project
-    include: [{ model: Invoices, as: "invoices" }],
+    include: [{ model: Invoices, as: 'invoices' }],
   })
     .then((projects) => {
       //get all the invoices from all the projects in a single array
@@ -60,18 +59,16 @@ exports.deleteInvoice = (req, res, next) => {
       return res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("error in deleting invoice", err);
+      console.log('error in deleting invoice', err);
       return res.sendStatus(400);
     });
 };
 
 exports.createInvoice = (req, res, next) => {
-  Invoices.create({
-    ...req.body,
-  })
+  Invoices.create(req.body)
     .then((invoice) => res.send({ response: invoice }))
     .catch((err) => {
-      console.log("Error when creating invoice", err);
+      console.log('Error when creating invoice', err);
       return res.sendStatus(400);
     });
 };
