@@ -24,7 +24,7 @@ exports.registerCompany = (req, res, next) => {
 
 exports.login = (req, res, next) => {
   const { username, password } = req.body;
-  Persons.findOne({ where: { username: username } }).then(async (person) => {
+  Persons.findOne({ where: { username: username } }).then((person) => {
     if (!person) {
       return res.status(401).send("Invalid username!");
     }
