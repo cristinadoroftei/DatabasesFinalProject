@@ -1,5 +1,4 @@
-const { response } = require("express");
-const Companies = require("../models/companies");
+const Companies = require('../models/companies');
 
 exports.getCompany = (req, res, next) => {
   const companyId = req.params.id;
@@ -12,15 +11,10 @@ exports.getCompany = (req, res, next) => {
 };
 
 exports.createCompany = (req, res, next) => {
-  Companies.create({
-    name: req.body.name,
-    contact_name: req.body.contact_name,
-    contact_email: req.body.contact_email,
-    contact_phone: req.body.contact_phone,
-  })
+  Companies.create(req.body)
     .then((company) => res.send({ response: company }))
     .catch((err) => {
-      console.log("Error when creating company", err);
+      console.log('Error when creating company', err);
       return res.sendStatus(400);
     });
 };
@@ -31,7 +25,7 @@ exports.updateCompany = (req, res, next) => {
     .then((company) => company.update(req.body))
     .then((updatedCompany) => res.send({ response: updatedCompany }))
     .catch((err) => {
-      console.log("Error when updating comapny!");
+      console.log('Error when updating company!');
       return res.sendStatus(400);
     });
 };
@@ -42,7 +36,7 @@ exports.deleteCompany = (req, res, next) => {
     .then((company) => company.destroy())
     .then(() => res.sendStatus(200))
     .catch((err) => {
-      console.log("Error when deleting company!", err);
+      console.log('Error when deleting company!', err);
       return res.sendStatus(400);
     });
 };
