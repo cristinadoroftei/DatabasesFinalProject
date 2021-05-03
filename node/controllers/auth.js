@@ -28,8 +28,7 @@ exports.login = (req, res, next) => {
     if (!person) {
       return res.status(401).send("Invalid username!");
     }
-    // const salt = bcrypt.genSaltSync(12);
-    const hash = bcrypt.hashSync("password", 12);
+
     if (bcrypt.compareSync(password, person.password)) {
       req.session.person = person;
       return req.session.save((err) => {
