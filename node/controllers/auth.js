@@ -24,10 +24,12 @@ exports.registerCompany = (req, res, next) => {
 
 exports.login = (req, res, next) => {
   const { username, password } = req.body;
-  Persons.findOne({ where: { username: username } }).then((person) => {
+  Persons.findOne({ where: { username: username } }).then(async (person) => {
     if (!person) {
       return res.status(401).send("Invalid username!");
     }
+    // const salt = bcrypt.genSaltSync(12);
+    const hash = bcrypt.hashSync("password", 12);
     if (bcrypt.compareSync(password, person.password)) {
       req.session.person = person;
       return req.session.save((err) => {
