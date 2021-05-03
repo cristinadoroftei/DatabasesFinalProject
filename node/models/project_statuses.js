@@ -35,6 +35,7 @@ module.exports = sequelize.define(
   {
     sequelize,
     tableName: "project_statuses",
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {
