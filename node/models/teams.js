@@ -15,6 +15,14 @@ module.exports = sequelize.define(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    company_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "companies",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -26,6 +34,11 @@ module.exports = sequelize.define(
         unique: true,
         using: "BTREE",
         fields: [{ name: "id" }],
+      },
+      {
+        name: "teams_company_id_foreign_idx",
+        using: "BTREE",
+        fields: [{ name: "company_id" }],
       },
     ],
   }
