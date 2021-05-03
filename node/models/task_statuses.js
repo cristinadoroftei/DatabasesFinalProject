@@ -1,9 +1,9 @@
-const DataTypes = require("sequelize");
+const DataTypes = require('sequelize');
 
-const sequelize = require("../util/database");
+const sequelize = require('../util/database');
 
 module.exports = sequelize.define(
-  "task_statuses",
+  'task_statuses',
   {
     id: {
       autoIncrement: true,
@@ -15,8 +15,8 @@ module.exports = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "status_categories",
-        key: "id",
+        model: 'status_categories',
+        key: 'id',
       },
     },
     name: {
@@ -27,31 +27,32 @@ module.exports = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: "projects",
-        key: "id",
+        model: 'projects',
+        key: 'id',
       },
     },
   },
   {
     sequelize,
-    tableName: "task_statuses",
+    tableName: 'task_statuses',
+    hasTrigger: true,
     timestamps: false,
     indexes: [
       {
-        name: "PRIMARY",
+        name: 'PRIMARY',
         unique: true,
-        using: "BTREE",
-        fields: [{ name: "id" }],
+        using: 'BTREE',
+        fields: [{ name: 'id' }],
       },
       {
-        name: "FKTask_Statu982149",
-        using: "BTREE",
-        fields: [{ name: "status_category_id" }],
+        name: 'FKTask_Statu982149',
+        using: 'BTREE',
+        fields: [{ name: 'status_category_id' }],
       },
       {
-        name: "task_statuses_project_id_foreign_idx",
-        using: "BTREE",
-        fields: [{ name: "project_id" }],
+        name: 'task_statuses_project_id_foreign_idx',
+        using: 'BTREE',
+        fields: [{ name: 'project_id' }],
       },
     ],
   }

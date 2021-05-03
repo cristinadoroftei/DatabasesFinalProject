@@ -1,6 +1,6 @@
-const Projects = require("../models/projects");
-const Tasks = require("../models/tasks");
-const TaskStatuses = require("../models/task_statuses");
+const Projects = require('../models/projects');
+const Tasks = require('../models/tasks');
+const TaskStatuses = require('../models/task_statuses');
 
 exports.getTasksByProjectId = (req, res, next) => {
   const projId = req.params.id;
@@ -8,9 +8,14 @@ exports.getTasksByProjectId = (req, res, next) => {
     where: {
       project_id: projId,
     },
-  }).then((tasks) => {
-    res.send({ tasks: tasks });
-  });
+  })
+    .then((tasks) => {
+      res.send({ tasks: tasks });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.createTask = (req, res, next) => {
@@ -18,7 +23,12 @@ exports.createTask = (req, res, next) => {
     project_id: req.body.project_id,
     task_status_id: req.body.task_status_id,
     name: req.body.name,
-  }).then((task) => res.send({ response: task }));
+  })
+    .then((task) => res.send({ response: task }))
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.updateTask = (req, res, next) => {
@@ -30,7 +40,10 @@ exports.updateTask = (req, res, next) => {
     .then((updatedTask) => {
       return res.send({ response: updatedTask });
     })
-    .catch((err) => console.log("Error when updating task!", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.deleteTask = (req, res, next) => {
@@ -40,9 +53,12 @@ exports.deleteTask = (req, res, next) => {
       return task.destroy();
     })
     .then(() => {
-      return res.send({ response: "Task deleted!" });
+      return res.sendStatus(200);
     })
-    .catch((err) => console.log("Error when deleting task!", err));
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
+    });
 };
 
 exports.getTaskStatusesByProjectId = (req, res, next) => {
@@ -55,5 +71,9 @@ exports.getTaskStatusesByProjectId = (req, res, next) => {
     })
     .then((taskStatuses) => {
       res.send({ taskStatuses: taskStatuses });
+    })
+    .catch((err) => {
+      console.log(err);
+      return res.sendStatus(400);
     });
 };
