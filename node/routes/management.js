@@ -8,8 +8,7 @@ const personsController = require("../controllers/persons");
 const timeRegistrationsController = require("../controllers/timeRegistrations");
 const taskStatusesController = require("../controllers/taskStatuses");
 const companiesController = require("../controllers/companies");
-const companies = require("../models/companies");
-
+const teamsController = require("../controllers/teams");
 const router = express.Router();
 
 //GET
@@ -41,6 +40,8 @@ router.get(
 );
 
 router.get("/companies/:id", companiesController.getCompany);
+
+router.get("/teams/:id/company", teamsController.getTeamsByCompanyId);
 
 //POST
 router.post("/projects", projectsController.createProject);
