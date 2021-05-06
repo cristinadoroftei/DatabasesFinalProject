@@ -1,6 +1,8 @@
 const Projects = require("../models/projects");
 
 exports.getProjects = (req, res, next) => {
+  console.log(req.session.person);
+  req.session.person.getCompany().then((company) => console.log(company));
   Projects.findAll({
     where: { company_id: req.person.company_id },
   })
