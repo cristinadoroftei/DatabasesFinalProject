@@ -13,10 +13,7 @@ exports.getTaskStatusesByProjectId = (req, res, next) => {
 };
 
 exports.createTaskStatus = (req, res, next) => {
-  TaskStatuses.create({
-    status_category_id: req.body.status_category_id,
-    name: req.body.name,
-  })
+  TaskStatuses.create(req.body)
     .then((taskStatus) => res.send({ response: taskStatus }))
     .catch((err) => {
       console.log(err);

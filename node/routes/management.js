@@ -9,7 +9,7 @@ const timeRegistrationsController = require("../controllers/timeRegistrations");
 const taskStatusesController = require("../controllers/taskStatuses");
 const companiesController = require("../controllers/companies");
 const teamsController = require("../controllers/teams");
-const isAdmin = require("../util/is-admin");
+const isAdmin = require("../util/validators").isAdmin;
 const router = express.Router();
 
 //GET

@@ -1,4 +1,4 @@
-const Projects = require("../models/projects");
+const Projects = require('../models/projects');
 
 exports.getProjects = (req, res, next) => {
   console.log(req.session.person);
@@ -10,22 +10,16 @@ exports.getProjects = (req, res, next) => {
       res.send({ response: projects });
     })
     .catch((err) => {
-      console.log("Error when fetching projects!", err);
+      console.log('Error when fetching projects!', err);
       return res.sendStatus(400);
     });
 };
 
 exports.createProject = (req, res, next) => {
-  Projects.create({
-    company_id: req.person.company_id,
-    client_id: req.body.client_id,
-    project_status_id: req.body.project_status_id,
-    name: req.body.name,
-    billable: req.body.billable,
-  })
+  Projects.create(req.body)
     .then((project) => res.send({ response: project }))
     .catch((err) => {
-      console.log("Error when creating a new project!", err);
+      console.log('Error when creating a new project!', err);
       return res.sendStatus(400);
     });
 };
@@ -37,7 +31,7 @@ exports.getProjectsById = (req, res, next) => {
       res.send({ response: project });
     })
     .catch((err) => {
-      console.log("Error when getting project by id!", err);
+      console.log('Error when getting project by id!', err);
       return res.sendStatus(400);
     });
 };
@@ -53,7 +47,7 @@ exports.updateProject = (req, res, next) => {
       return res.send({ response: updatedProject });
     })
     .catch((err) => {
-      console.log("error in updating project!", err);
+      console.log('error in updating project!', err);
       return res.sendStatus(400);
     });
 };
@@ -68,7 +62,7 @@ exports.deleteProject = (req, res, next) => {
       return res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("error in deleting project", err);
+      console.log('error in deleting project', err);
       return res.sendStatus(400);
     });
 };

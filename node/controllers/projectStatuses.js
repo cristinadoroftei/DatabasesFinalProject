@@ -16,9 +16,7 @@ exports.getProjectStatuses = (req, res, next) => {
 };
 
 exports.createProjectStatus = (req, res, next) => {
-  ProjectStatuses.create({
-    ...req.body,
-  })
+  ProjectStatuses.create(req.body)
     .then((projectStatus) => {
       return res.send({ response: projectStatus });
     })

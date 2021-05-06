@@ -15,7 +15,7 @@ exports.getTeamsByCompanyId = (req, res, next) => {
 exports.createTeam = (req, res, next) => {
   req.person
     .getCompany()
-    .then((company) => company.createTeam({ name: req.body.name }))
+    .then((company) => company.createTeam(req.body))
     .then((team) => res.send({ response: team }))
     .catch((err) => {
       console.log(err);
@@ -26,7 +26,7 @@ exports.createTeam = (req, res, next) => {
 exports.updateTeam = (req, res, next) => {
   const teamId = req.params.id;
   Teams.findByPk(teamId)
-    .then((team) => team.update({ name: req.body.name }))
+    .then((team) => team.update(req.body))
     .then((updatedTeam) => res.send({ response: updatedTeam }))
     .catch((err) => {
       console.log(err);
