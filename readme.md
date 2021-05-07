@@ -1,4 +1,4 @@
-## You can find the assets needed, including the Documentation and the Database Diagram in the `/resources` directory.
+### You can find the assets needed, including the Documentation and the Database Diagram in the `/resources` directory.
 
 # Here are the steps you should follow for running all the scripts and check out our database design.
 
