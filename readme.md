@@ -25,8 +25,8 @@
 At this point you should meet all the requirements to create invoices and test the invoicing functionality.
 To test that out, you can execute the following commands in your database client console:
 
-`select * from management.tasks;`
-`select * from management.time_registrations;`
+```select * from management.tasks;
+select * from management.time_registrations;```
 
 Now you should have access to 2 output tabs. In the tasks table you can see that all records have the field `locked_date` as `null` and all time entries in `time_registrations` table have the field `locked` set to `0`.
 
