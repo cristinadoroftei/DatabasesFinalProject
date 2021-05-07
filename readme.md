@@ -4,17 +4,17 @@
 
 2. Configure server's development environment. (using a terminal navigate into `/node` directory).
 
-2.1. Navigate into `/config`, make a copy of `config-template.json` and rename it to `config.json`, then update its content with proper variables.
+	2.1. Navigate into `/config`, make a copy of `config-template.json` and rename it to `config.json`, then update its content with proper variables.
 
-2.2. Navigate into `/util`, make a copy of both `database-template.js` and `store-template.js`, and rename them into `database.js` and `store.js`, then update their content with proper variables.
+	2.2. Navigate into `/util`, make a copy of both `database-template.js` and `store-template.js`, and rename them into `database.js` and `store.js`, then update their content with proper variables.
 
-2.3. Install all the package dependencies with `npm install`.
+	2.3. Install all the package dependencies with `npm install`.
 
 3. Configure database
 
-3.1 Open your chosen database client and connect to your mysql server.
+	3.1 Open your chosen database client and connect to your mysql server.
 
-3.2 Run script named `init_db.sql`.
+	3.2 Run script named `init_db.sql`.
 
 4. Update the database structure by executing command `npm run migrate` in the previously opened terminal.
 
