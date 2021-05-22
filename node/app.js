@@ -34,8 +34,14 @@ app.use(authRoutes);
 app.use(isAuthenticated);
 app.use(managementRoutes);
 
+app.get("/500", errorController.get500);
+
 //keep this always last
 app.use(errorController.get404);
+
+app.use((error, req, res, next) => {
+  res.redirect("/500");
+});
 
 //sync the models to the database by creating the appropriate tables and relatiions
 sequelize
