@@ -1,6 +1,9 @@
+#status_categories
+INSERT INTO `management`.`status_categories` (`name`) VALUES ('TODO'), ('INPROGRESS'), ('DONE');
+
 #companies
 INSERT INTO 
-	`management`.`Companies` (`name`, `contact_name`, `contact_email`, `contact_phone`) 
+	`management`.`companies` (`name`, `contact_name`, `contact_email`, `contact_phone`)
 VALUES 
 	('IBM', 'John Deer', 'johndeer@gmail.com', '+45123456'),
 	('Hotel DAngleterre', 'Maria Smith', 'mariasmith@gmail.com', '+4512134'),
@@ -12,31 +15,31 @@ VALUES
     
 #persons
 INSERT INTO 
-	`management`.`Persons` (`company_id`, `first_name`, `last_name`, `user_type`, `username`, `password`, `internal_cost`)
+	`management`.`persons` (`company_id`, `first_name`, `last_name`, `user_type`, `username`, `password`, `internal_cost`)
 VALUES 
-	('1', 'Maria', 'West', 'CONTROLLER', 'mariawest', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '120'),
-	('1', 'Steven', 'Altcoin', 'ADMIN', 'stevenrussell', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '140'),
-	('1', 'Daniel', 'Ricciardo', 'ADMIN', 'danielricciardo', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '95'),
-	('1', 'George', 'Russell', 'CONTROLLER', 'georgerussell', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '150'),
-	('2', 'Lewis', 'Hamilton', 'ADMIN', 'lewishamilton', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '100'),
-	('2', 'Niki', 'Lauda', 'CONTROLLER', 'nikilauda', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '145'),
-	('2', 'Lisa', 'Gonsalez', 'ADMIN', 'lisagonsalez', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '135'),
-	('3', 'Henrik', 'Ginger', 'ADMIN', 'henrikginger', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '110'),
-	('3', 'Millie', 'Brown', 'CONTROLLER', 'milliebrown', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '145'),
-	('3', 'Heidi', 'Blue', 'CONTROLLER', 'heidiblue', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '110'),
-	('4', 'Alex', 'Albon', 'ADMIN', 'alexalbon', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '115'),
-	('4', 'Max', 'Verstappen', 'CONTROLLER', 'maxverstappen', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '135'),
-	('4', 'Bella', 'Hadid', 'ADMIN', 'bellahadid', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '145'),
-    ('5', 'John', 'Smith', 'ADMIN', 'johnsmith', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '200'),
-    ('5', 'Jane', 'Doe', 'CONTROLLER', 'janedoe', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '120'),
-    ('5', 'Adam', 'Sandler', 'CONTROLLER', 'adamsandler', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '160'),
-    ('6', 'John', 'Snow', 'ADMIN', 'johnsnow', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '105'),
-    ('6', 'Elena', 'Farago', 'CONTROLLER', 'elenafarago', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '110'),
-    ('6', 'Michelle', 'Obama', 'ADMIN', 'michelleobama', '$2y$12$mQoG41vCy3WX06gkAb1mxOKx2QTp56VGd56RLS09767vul/1kng/i ', '100');
+	('1', 'Maria', 'West', 'CONTROLLER', 'mariawest', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '120'),
+	('1', 'Steven', 'Altcoin', 'ADMIN', 'stevenrussell', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '140'),
+	('1', 'Daniel', 'Ricciardo', 'ADMIN', 'danielricciardo', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '95'),
+	('1', 'George', 'Russell', 'CONTROLLER', 'georgerussell', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '150'),
+	('2', 'Lewis', 'Hamilton', 'ADMIN', 'lewishamilton', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '100'),
+	('2', 'Niki', 'Lauda', 'CONTROLLER', 'nikilauda', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '145'),
+	('2', 'Lisa', 'Gonsalez', 'ADMIN', 'lisagonsalez', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '135'),
+	('3', 'Henrik', 'Ginger', 'ADMIN', 'henrikginger', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '110'),
+	('3', 'Millie', 'Brown', 'CONTROLLER', 'milliebrown', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '145'),
+	('3', 'Heidi', 'Blue', 'CONTROLLER', 'heidiblue', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '110'),
+	('4', 'Alex', 'Albon', 'ADMIN', 'alexalbon', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '115'),
+	('4', 'Max', 'Verstappen', 'CONTROLLER', 'maxverstappen', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '135'),
+	('4', 'Bella', 'Hadid', 'ADMIN', 'bellahadid', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '145'),
+    ('5', 'John', 'Smith', 'ADMIN', 'johnsmith', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '200'),
+    ('5', 'Jane', 'Doe', 'CONTROLLER', 'janedoe', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '120'),
+    ('5', 'Adam', 'Sandler', 'CONTROLLER', 'adamsandler', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '160'),
+    ('6', 'John', 'Snow', 'ADMIN', 'johnsnow', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '105'),
+    ('6', 'Elena', 'Farago', 'CONTROLLER', 'elenafarago', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '110'),
+    ('6', 'Michelle', 'Obama', 'ADMIN', 'michelleobama', '$2b$12$taTPp8dQzXik4xVMT8j6MesX.xw6jvPOL.r9hPHq22jdK4L.enu9G', '100');
 
 #teams
 INSERT INTO 
-	`management`.`Teams` (`name`) 
+	`management`.`teams` (`name`)
 VALUES 
 	('Rainbow Warriors'),
 	('Dream Crushers'),
@@ -51,7 +54,7 @@ VALUES
 
 #teams-persons
 INSERT INTO 
-	`management`.`Teams_Persons` (`person_id`, `team_id`) 
+	`management`.`teams_persons` (`person_id`, `team_id`)
 VALUES 
 	('1', '1'),
 	('2', '1'),
@@ -75,27 +78,6 @@ VALUES
     ('17', '10'),
     ('18', '10'),
     ('19', '10');
-
-#status_categories
-INSERT INTO `management`.`status_categories` (`name`) VALUES ('TODO'), ('INPROGRESS'), ('DONE');
-
-#task_statuses
-INSERT INTO 
-	`management`.`task_statuses` (`status_category_id`, `name`) 
-VALUES 
-('1', 'To do'),
-('2', 'In progress'),
-('2', 'Ready for test'),
-('3', 'Done');
-
-#project_statuses
-INSERT INTO 
-`management`.`project_statuses` (`status_category_id`, `name`)
- VALUES 
- ('1', 'Opportunities'),
- ('1', 'Planning'),
- ('2', 'Running'),
- ('3', 'Done');
  
 #projects
 INSERT INTO 
