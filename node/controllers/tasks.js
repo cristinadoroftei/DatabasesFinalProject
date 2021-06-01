@@ -1,6 +1,6 @@
-const Projects = require('../models/projects');
-const Tasks = require('../models/tasks');
-const TaskStatuses = require('../models/task_statuses');
+const Projects = require("../models/projects");
+const Tasks = require("../models/tasks");
+const TaskStatuses = require("../models/task_statuses");
 
 exports.getTasksByProjectId = (req, res, next) => {
   const projId = req.params.id;

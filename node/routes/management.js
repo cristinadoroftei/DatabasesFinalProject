@@ -31,7 +31,7 @@ router.get("/persons", isAdmin, personsController.getPersons);
 router.get("/persons/:id", isAdmin, personsController.getPersonById);
 
 router.get(
-  "/time_registrations/:id/task",
+  "/tasks/:id/time_registrations",
   timeRegistrationsController.getTimeRegistrationByTaskId
 );
 
